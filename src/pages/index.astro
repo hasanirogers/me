@@ -11,9 +11,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<!-- <Header /> -->
 		<main>
+      <header>
+        <img src="/avatar.webp" alt="Me" />
+        <div>
+          <h1>{SITE_TITLE}</h1>
+          <h2>{SITE_DESCRIPTION}</h2>
+        </div>
+      </header>
 			<me-hero></me-hero>
+      <me-waves></me-waves>
+      <me-contact></me-contact>
 		</main>
 		<Footer />
 	</body>

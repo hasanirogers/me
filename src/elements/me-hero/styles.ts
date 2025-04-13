@@ -5,6 +5,7 @@ export default css`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     width: 100%;
     min-height: 100vh;
   }
@@ -17,7 +18,7 @@ export default css`
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgb(var(--color-background) / 80%) 0%, rgb(var(--color-background)) 80%);
+    background: radial-gradient(circle, rgb(var(--color-tertiary) / 80%) 0%, rgb(var(--color-tertiary)) 80%);
     z-index: 1;
   }
 
@@ -26,7 +27,8 @@ export default css`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1em;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
   }
 
   kemet-button {
@@ -38,25 +40,28 @@ export default css`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     position: relative;
     z-index: 1;
     color: white;
-    border: 3px solid;
+    border: 2px solid;
     padding-top: 2px;
     border-radius: 50%;
   }
 
-  @media (min-width: 768px) {
-    a {
-      display: none;
-    }
-  }
   .project {
     position: absolute;
     z-index: 1;
     font-size: 2.5rem;
+  }
+
+  .project span {
+    font-size: clamp(1.75rem, 2.5vw, 3rem);
+    line-height: 1.2;
+    text-align: center;
+    display: inline-flex;
+    max-width: 300px;
   }
 `;
 

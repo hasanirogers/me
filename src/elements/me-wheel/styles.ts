@@ -6,20 +6,30 @@ export default css`
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     z-index: 1;
+    transform-origin: 0 0;
+    animation: spin 160s linear infinite;
   }
 
 
   nav {
     position: relative;
-    width: 420px;
-    height: 420px;
+    width: 340px;
+    height: 340px;
     margin: 50px auto;
     border: 2px solid white;
     border-radius: 50%;
-    transition: transform 0.5s ease-in-out;
-    /*animation: spin 60s linear infinite; */
+    transition: transform 1s ease-in-out;
+  }
+
+  @media (min-width: 768px) {
+    nav {
+      width: 420px;
+      height: 420px;
+    }
   }
 
   button {
@@ -27,6 +37,8 @@ export default css`
     position: absolute;
     width: 5vw;
     height: 5vw;
+    min-width: 64px;
+    min-height: 64px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     display: flex;
@@ -43,27 +55,6 @@ export default css`
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  swiper-container {
-    width: 100%;
-    height: 100%;
-    width: 75vw;
-    height: 75vw;
-    overflow: hidden;
-    border-radius: 50%;
-    border: 1rem solid white;
-  }
-
-  swiper-slide {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  ::part(wrapper) {
-    align-items: center;
   }
 
   @keyframes spin {

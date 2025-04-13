@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { heroSlides } from './content';
+import { heroSlides, type HeroSlide } from './content';
 import 'kemet-ui/dist/components/kemet-button/kemet-button';
 import '../me-wheel';
 import './slider';
@@ -12,14 +12,14 @@ export class MeHero extends LitElement {
   static styles = [styles];
 
   @property()
-  currentProject: string = '';
+  project: HeroSlide = heroSlides[0];
 
   constructor() {
     super();
 
-    document.addEventListener('me-wheel-change', (event: Event) => {
+    document.addEventListener('me-wheel-click', (event: Event) => {
       if (event instanceof CustomEvent) {
-        this.handleWheelChange(event);
+        this.handleWheelClick(event);
       }
     });
   }
@@ -28,17 +28,19 @@ export class MeHero extends LitElement {
     return html`
       <div>
         <me-wheel .slides=${heroSlides}></me-wheel>
-        <div class="project">Project Name</div>
-        <a href="/projects/${this.currentProject}" aria-label="Projects">
-          <kemet-icon icon="arrow-return-right" size="32"></kemet-icon>
-        </a>
+        <div class="project">
+          <span>${this.project.heading}</span>
+          <a href="/projects/${this.project.slug}" aria-label="Projects">
+            <kemet-icon icon="arrow-return-right" size="24"></kemet-icon>
+          </a>
+        </div>
       </div>
       <me-hero-slider .slides=${heroSlides}></me-hero-slider>
     `;
   }
 
-  handleWheelChange(event: CustomEvent) {
-    this.currentProject = event.detail.current.getAttribute('slug');
+  handleWheelClick(event: CustomEvent) {
+    this.project = event.detail.slide;
   }
 }
 

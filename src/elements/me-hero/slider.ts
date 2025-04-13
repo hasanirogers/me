@@ -70,7 +70,7 @@ export class MeHeroSlider extends LitElement {
   }
 
   handleWheelClick(event: CustomEvent) {
-    const activeIndex = event.detail.slideIndex;
+    const activeIndex = event.detail.slide.index;
     this.swiperInstance?.slideTo(activeIndex);
   }
 }
