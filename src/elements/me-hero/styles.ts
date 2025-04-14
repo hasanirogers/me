@@ -36,6 +36,11 @@ export default css`
     z-index: 1;
   }
 
+  me-loader {
+    position: relative;
+    z-index: 2;
+  }
+
   a {
     display: flex;
     align-items: center;
@@ -45,7 +50,7 @@ export default css`
     position: relative;
     z-index: 1;
     color: white;
-    border: 2px solid;
+    border: 2px solid rgb(var(--color-primary));
     padding-top: 2px;
     border-radius: 50%;
   }
@@ -57,7 +62,7 @@ export default css`
   }
 
   .project span {
-    font-size: clamp(1.75rem, 2.5vw, 3rem);
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
     line-height: 1.2;
     text-align: center;
     display: inline-flex;

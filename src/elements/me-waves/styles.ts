@@ -4,7 +4,6 @@ export default css`
   :host {
     display: block;
     position: relative;
-    top: var(--footer-offset);
     z-index: 3;
   }
 

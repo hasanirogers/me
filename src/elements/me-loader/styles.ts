@@ -2,7 +2,7 @@ import { css } from 'lit';
 
 export default css`
   :host {
-    display: block;
+    display: inline-block;
     visibility: hidden;
   }
 
@@ -10,59 +10,19 @@ export default css`
     visibility: visible;
   }
 
-  .ellipsis {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 50px;
-  }
-  .ellipsis div {
-    position: absolute;
-    top: 33px;
-    width: 13px;
-    height: 13px;
+  .loader {
+    width: 50px;
+    --b: 8px;
+    aspect-ratio: 1;
     border-radius: 50%;
-    background: #fff;
-    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+    background: rgb(var(--color-primary));
+    -webkit-mask:
+      repeating-conic-gradient(#0000 0deg,#000 1deg 70deg,#0000 71deg 90deg),
+      radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+    -webkit-mask-composite: destination-in;
+            mask-composite: intersect;
+    animation: l5 1s infinite;
   }
-  .ellipsis div:nth-child(1) {
-    left: 8px;
-    animation: ellipsis1 0.6s infinite;
-  }
-  .ellipsis div:nth-child(2) {
-    left: 8px;
-    animation: ellipsis2 0.6s infinite;
-  }
-  .ellipsis div:nth-child(3) {
-    left: 32px;
-    animation: ellipsis2 0.6s infinite;
-  }
-  .ellipsis div:nth-child(4) {
-    left: 56px;
-    animation: ellipsis3 0.6s infinite;
-  }
-  @keyframes ellipsis1 {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  @keyframes ellipsis3 {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0);
-    }
-  }
-  @keyframes ellipsis2 {
-    0% {
-      transform: translate(0, 0);
-    }
-    100% {
-      transform: translate(24px, 0);
-    }
-  }
+
+  @keyframes l5 {to{transform: rotate(.5turn)}}
 `

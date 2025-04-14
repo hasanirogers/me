@@ -52,7 +52,7 @@ export default css`
 
   img {
     display: flex;
-    width: 100%;
+    width: auto;
     height: 100%;
     object-fit: cover;
   }

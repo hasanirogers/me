@@ -10,6 +10,6 @@ export default class MeLoader extends LitElement {
   loading: boolean = false;
 
   render() {
-    return html`<div class="ellipsis"><div></div><div></div><div></div><div></div></div>`;
+    return html`<div class="loader"></div>`;
   }
 }

@@ -5,23 +5,7 @@ export default css`
     color: rgb(var(--color-tertiary));
     display: block;
     position: relative;
-    top: -6rem;
     background-color: white;
-  }
-
-  section {
-    text-align: center;
-    font-size: 1rem;
-    margin: 0;
-    padding-top: 6rem;
-    max-height: 64vh;
-    overflow: auto;
-  }
-
-  @media screen and (min-width: 768px) {
-    section {
-      max-height: none;
-    }
   }
 
   fieldset {
