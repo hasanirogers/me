@@ -9,12 +9,12 @@
   --footer-offset: -6rem;
   --footer-reoffset: 0;
 
+  overflow: auto;
+
   @media screen and (min-width: 768px) {
     --footer-offset: -10rem;
     --footer-reoffset: 8rem;
   }
-
-  overflow: auto;
 }
 
 body {
