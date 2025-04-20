@@ -5,6 +5,4 @@ image: "/projects/fds.webp"
 skills: ["storybook", "lit", "web components", "react", "typescript", "scss", "design systems", "angular", "wcag", "jest", "vue", "aem"]
 ---
 
-# Ford Design System
-
-Hello
+I lead FDS, Ford's internal design system.
