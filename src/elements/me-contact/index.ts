@@ -89,14 +89,8 @@ export class MeContact extends LitElement {
         try {
             const response = await fetch(url, config);
             const data = await response.json() as IData;
-
             this.loader.loading = false;
-
-            if (data.message = 'SUCCESS') {
-              this.formMessage = 'Your message was sent successfully!'
-            } else {
-              this.formMessage = 'There was a problem sending your message.'
-            }
+            this.formMessage = data.message;
         } catch (error) {
           console.error(error);
         }

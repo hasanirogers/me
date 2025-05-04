@@ -34,7 +34,9 @@ jobs:
         working-directory: ./
         env:
           NODE_ENV: production
-          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          MAIL_HOST: ${{ secrets.MAIL_HOST }}
+          MAIL_USER: ${{ secrets.MAIL_USER }}
+          MAIL_PASS: ${{ secrets.MAIL_PASS }}
         run: |
           sshpass -p ${{ secrets.SSH_PASSWORD }} ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} <<EOF
           echo "Running commands on VPS"
@@ -43,7 +45,9 @@ jobs:
           cd ~/sites/me
           cat > .env <<EOL
           NODE_ENV=production
-          SENDGRID_API_KEY=$SENDGRID_API_KEY
+          MAIL_HOST=$MAIL_HOST
+          MAIL_USER=$MAIL_USER
+          MAIL_PASS=$MAIL_PASS
           EOL
           npm install
           npm run build

@@ -17,11 +17,14 @@
     "@astrojs/sitemap": "^3.3.0",
     "@sendgrid/mail": "^8.1.5",
     "astro": "^5.5.4",
+    "dotenv": "^16.5.0",
     "kemet-ui": "^3.1.0",
     "lit": "^3.2.1",
+    "nodemailer": "^6.10.1",
     "swiper": "^11.2.6"
   },
   "devDependencies": {
+    "@types/nodemailer": "^6.4.17",
     "sass-embedded": "^1.86.0"
   }
 }

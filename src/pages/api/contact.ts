@@ -1,13 +1,11 @@
 import type { APIRoute } from "astro";
-import sgMail from "@sendgrid/mail";
-
-sgMail.setApiKey(import.meta.env.SENDGRID_API_KEY);
+import 'dotenv/config'
+import nodemailer from "nodemailer";
 
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   const data = await request.json();
-  console.log(data);
   const { message, email, phone, user } = data;
 
   const textContent = `
@@ -29,25 +27,40 @@ export const POST: APIRoute = async ({ request }) => {
     <div>Phone: ${phone}</div>
   `;
 
-  const sgMailMessage = {
-    to: ['dev@hasanirogers.me', 'deificarts@gmail.com'],
-    from: email,
-    subject: user + ' sent a message!',
-    text: textContent,
-    html: htmlContent,
-  };
+  const transporter = nodemailer.createTransport({
+    host: process.env.MAIL_HOST,
+    port: 587,
+    secure: false, // true for port 465, false for other ports
+    auth: {
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASS,
+    },
+  });
 
   try {
-    await sgMail.send(sgMailMessage);
-    return new Response(
-      JSON.stringify({ success: true, message: "Email sent successfully!" }),
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error("SendGrid Error:", error);
+    // send mail with defined transport object
+    const info = await transporter.sendMail({
+      from: process.env.MAIL_USER, // sender address
+      to: "dev@hasanirogers.me, contact@deificarts.com", // list of receivers
+      subject: user + ' sent a message!', // Subject line
+      text: textContent, // plain text body
+      html: htmlContent, // html body
+    });
+
+    if (info.response.includes('Ok')) {
+      return new Response(
+        JSON.stringify({ success: true, message: "Message sent successfully!" }),
+        { status: 200 }
+      );
+    }
+
     return new Response(
       JSON.stringify({ success: false, message: "Failed to send email." }),
-      { status: 500 }
+      { status: 400 }
     );
+  } catch(error) {
+    return new Response(
+      JSON.stringify({ success: false, message: "An internal server error occurred." }),
+      { status: 500 })
   }
-};
+}
