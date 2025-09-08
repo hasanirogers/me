@@ -1,13 +1,13 @@
 ---
 title: It’s time to get comfortable with web standards again
-date: 2024-09-08 
+date: 2025-09-08 
 author: Hasani Rogers
 tags: 
 - post
 - web components
 - custom elements
 - web standards
-excerpt: I'm not saying ditch React or Next completely. Just here me out.
+excerpt: I'm not saying ditch React or Next completely. Just hear me out.
 ---
 
 Typescript is ok though.
