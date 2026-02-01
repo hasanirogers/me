@@ -6,7 +6,7 @@ export default css`
     display: block;
     position: relative;
     background-color: white;
-    padding-top: 2rem;
+    padding-top: 6rem;
     border-top: 1px solid rgb(var(--color-tertiary) / 25%);
   }
 
